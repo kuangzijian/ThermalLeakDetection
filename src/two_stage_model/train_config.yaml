@@ -1,0 +1,142 @@
+thermal_v2:
+  data: LeakAI_v11_patch_cls_data
+  arch: ResNet50
+  nc: 3
+  transforms: augment positive
+  labels: ['leakage', 'normal']
+  leakage-up: False
+
+thermal_v3:
+  data: difference based labeled data (202405) + yolo based labeled data (old)
+  arch: ResNet50
+  nc: 3
+  transforms:
+  labels: ['negative', 'positive']
+  leakage-up: True 
+
+diff_v1:
+  data: LeakAI_v11_diff_patch_cls_data
+  arch: ResNet50
+  nc: 3
+  transforms:
+    diff-format: similarity
+  labels: ['leakage', 'normal']
+  leakage-up: False 
+
+diff_v2:
+  data: difference based labeled data (202405) + yolo based labeled data (old)
+  arch: ResNet50
+  nc: 3
+  transforms:
+  labels: ['negative', 'positive']
+  leakage-up: True 
+
+mc_v1:
+  data: LeakAI_v11_finerdiff_patch_cls_data + LeakAI_v11_determ_patch_cls_data
+  arch: ResNet50
+  nc: 4
+  transforms:
+    diff-format: difference   
+  labels: ['leakage', 'normal']
+  leakage-up: False 
+
+mc_v2:
+  data: LeakAI_v11_finerdiff_patch_cls_data + LeakAI_v11_determ_patch_cls_data
+  arch: ResNet50
+  nc: 4
+  transforms:
+    diff-format: difference   
+    hist-equalization: True
+  labels: ['leakage', 'normal']
+  leakage-up: False 
+
+mc_v3:
+  data: LeakAI_v11_finerdiff_patch_cls_data + LeakAI_v11_determ_patch_cls_data
+  arch: ResNet50
+  nc: 4
+  transforms:
+    diff-format: difference   
+    hist-equalization: True
+  labels: ['leakage', 'normal']
+  leakage-up: False 
+
+# mc_v4:
+#   data: difference based labeled data (202405)
+#   arch: ResNet50
+#   nc: 4
+#   transforms:
+#     diff-format: difference
+#     adjust-contrast: 2
+#     hist-equalization: True
+#     normalize: [50, 255]
+#   labels: ['negative', 'positive']
+#   leakage-up: True 
+
+mc_v5:
+  data: difference based labeled data (202405)
+  arch: ResNet50
+  nc: 4
+  transforms:
+    diff-format: difference
+    adjust-contrast: 2
+    hist-equalization: True
+  labels: ['negative', 'positive']
+  leakage-up: True 
+
+mc_v6:
+  data: difference based labeled data (202405) + yolo based labeled data (old)
+  arch: ResNet50
+  nc: 4
+  transforms:
+    diff-format: difference
+  labels: ['negative', 'positive']
+  leakage-up: True 
+
+mc_v7:
+  data: difference based labeled data (20240524)
+  arch: ResNet50
+  nc: 4
+  transforms:
+    diff-format: difference
+    weight: +20, truncate (0, 255)
+  labels: ['negative', 'positive']
+  leakage-up: True 
+
+mc_v8:
+  data: difference based labeled data (20240524) + yolo based labeled data (old)
+  arch: ResNet50
+  nc: 4
+  transforms:
+    diff-format: difference
+    weight: +20, truncate (0, 255)
+  labels: ['negative', 'positive']
+  leakage-up: True 
+
+mc_v9:
+  data: difference based labeled data (20240524) + yolo based labeled data (old)
+  arch: ResNet50
+  nc: 4
+  transforms:
+    diff-format: difference
+  labels: ['negative', 'positive']
+  leakage-up: True 
+
+mc_v10:
+  data: difference based labeled data (202405) + difference based labeled data (20240524) + yolo based labeled data (old)
+  arch: ResNet50
+  nc: 4
+  transforms:
+    diff-format: difference
+    weight: +20, truncate (0, 255)
+  labels: ['negative', 'positive']
+  leakage-up: True 
+
+mc_v10:
+  data: difference based labeled data (202405) + difference based labeled data (20240524) + yolo based labeled data (old)
+  arch: ResNet50
+  nc: 4
+  transforms:
+    diff-format: difference
+    weight: ^2, truncate (0, 255)
+  labels: ['negative', 'positive']
+  leakage-up: True 
